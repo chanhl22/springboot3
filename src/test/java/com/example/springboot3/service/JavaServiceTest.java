@@ -41,4 +41,56 @@ class JavaServiceTest {
                 .contains("first");
     }
 
+    @DisplayName("switch v1")
+    @Test
+    void switchV1() {
+        //given
+        int day = 1;
+
+        //when
+        String result = javaService.switchV1(day);
+
+        //then
+        assertThat(result).isEqualTo("MONDAY");
+    }
+
+    @DisplayName("switch v2")
+    @Test
+    void switchV2() {
+        //given
+        int day = 1;
+
+        //when
+        String result = javaService.switchV2(day);
+
+        //then
+        assertThat(result).isEqualTo("MONDAY");
+    }
+
+    @DisplayName("switch v3")
+    @Test
+    void switchV3() {
+        //given
+        int day = 1;
+
+        //when
+        String result = javaService.switchV3(day);
+
+        //then
+        assertThat(result).isEqualTo("MONDAY");
+    }
+
+    @DisplayName("switch v4")
+    @Test
+    void switchV4() {
+        //given
+        int day = 1;
+
+        //when
+        String result = javaService.switchV4(day);
+
+        //then
+        assertThat(result).isEqualTo("MONDAY");
+    }
+
 }
