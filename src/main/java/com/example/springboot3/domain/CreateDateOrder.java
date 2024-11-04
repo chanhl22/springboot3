@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class CreateDate {
+public class CreateDateOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,19 +32,19 @@ public class CreateDate {
     private LocalDateTime updateDate;
 
     @Builder
-    private CreateDate(LocalDateTime createDate, LocalDateTime updateDate) {
+    private CreateDateOrder(LocalDateTime createDate, LocalDateTime updateDate) {
         this.createDate = createDate;
         this.updateDate = updateDate;
     }
 
-    public static CreateDate createEntity(LocalDateTime createDate) {
-        return CreateDate.builder()
+    public static CreateDateOrder createEntity(LocalDateTime createDate) {
+        return CreateDateOrder.builder()
                 .createDate(createDate)
                 .build();
     }
 
-    public static CreateDate createEntity() {
-        return CreateDate.builder()
+    public static CreateDateOrder createEntity() {
+        return CreateDateOrder.builder()
                 .build();
     }
 
