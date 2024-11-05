@@ -22,9 +22,6 @@ class CreateDateOrderOrderServiceTest {
     @Autowired
     private CreateDateOrderService createDateOrderService;
 
-    @Autowired
-    private CreateDateOrderRepository createDateOrderRepository;
-
     @DisplayName("동시에 여러개 저장 - 실패 케이스")
     @Test
     void saveFail() {
@@ -53,8 +50,11 @@ class CreateDateOrderOrderServiceTest {
         LocalDateTime thePast1 = LocalDateTime.of(2024, 11, 3, 8, 45, 31);
         try (MockedStatic<LocalDateTime> utilities = Mockito.mockStatic(LocalDateTime.class)) {
             utilities.when(() -> LocalDateTime.now(ArgumentMatchers.any(Clock.class))).thenReturn(thePast1);
+            System.out.println(LocalDateTime.now());
             id1 = createDateOrderService.save();
         }
+
+        System.out.println(LocalDateTime.now());
 
         Long id2;
         LocalDateTime thePast2 = LocalDateTime.of(2024, 12, 3, 8, 45, 31);
