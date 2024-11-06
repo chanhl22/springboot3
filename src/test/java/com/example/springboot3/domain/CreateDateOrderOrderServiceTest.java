@@ -51,6 +51,7 @@ class CreateDateOrderOrderServiceTest {
         try (MockedStatic<LocalDateTime> utilities = Mockito.mockStatic(LocalDateTime.class)) {
             utilities.when(() -> LocalDateTime.now(ArgumentMatchers.any(Clock.class))).thenReturn(thePast1);
             System.out.println(LocalDateTime.now());
+            System.out.println(LocalDateTime.now(Clock.systemDefaultZone()));
             id1 = createDateOrderService.save();
         }
 
