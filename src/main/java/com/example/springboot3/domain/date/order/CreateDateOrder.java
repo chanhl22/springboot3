@@ -1,4 +1,4 @@
-package com.example.springboot3.domain;
+package com.example.springboot3.domain.date.order;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

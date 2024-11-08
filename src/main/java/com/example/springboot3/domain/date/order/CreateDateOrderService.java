@@ -1,4 +1,4 @@
-package com.example.springboot3.domain;
+package com.example.springboot3.domain.date.order;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

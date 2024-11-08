@@ -1,4 +1,4 @@
-package com.example.springboot3.domain;
+package com.example.springboot3.domain.date.order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
