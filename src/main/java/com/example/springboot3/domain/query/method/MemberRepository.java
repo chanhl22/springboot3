@@ -10,4 +10,10 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     List<Member> findByUsernameOrAge(String username, int age);
 
+    List<Member> findByUsernameIs(String username);
+
+    List<Member> findByUsernameEquals(String username);
+
+    List<Member> findByUsername(String username);
+
 }

@@ -57,4 +57,39 @@ class MemberTeamTest {
                 );
     }
 
+    @DisplayName("Is, Equal")
+    @Test
+    void is_equal() {
+        //given
+        Member member1 = memberRepository.save(new Member("곽두팔", 22));
+        Member member2 = memberRepository.save(new Member("박상두", 31));
+        Member member3 = memberRepository.save(new Member("김봉순", 27));
+        Member member4 = memberRepository.save(new Member("김봉순", 25));
+
+        //when
+        List<Member> result1 = memberRepository.findByUsernameIs("김봉순");
+        List<Member> result2 = memberRepository.findByUsernameEquals("김봉순");
+        List<Member> result3 = memberRepository.findByUsername("김봉순");
+
+        //then
+        assertThat(result1).hasSize(2)
+                .extracting("username", "age")
+                .containsExactly(
+                        Tuple.tuple("김봉순", 27),
+                        Tuple.tuple("김봉순", 25)
+                );
+        assertThat(result2).hasSize(2)
+                .extracting("username", "age")
+                .containsExactly(
+                        Tuple.tuple("김봉순", 27),
+                        Tuple.tuple("김봉순", 25)
+                );
+        assertThat(result3).hasSize(2)
+                .extracting("username", "age")
+                .containsExactly(
+                        Tuple.tuple("김봉순", 27),
+                        Tuple.tuple("김봉순", 25)
+                );
+    }
+
 }
