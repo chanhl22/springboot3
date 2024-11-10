@@ -92,4 +92,27 @@ class MemberTeamTest {
                 );
     }
 
+@DisplayName("Between")
+    @Test
+    void between() {
+        //given
+        Member member1 = memberRepository.save(new Member("곽두팔", 22));
+        Member member2 = memberRepository.save(new Member("박상두", 31));
+        Member member3 = memberRepository.save(new Member("김봉순", 27));
+        Member member4 = memberRepository.save(new Member("김봉순", 25));
+
+        //when
+        List<Member> result = memberRepository.findByAgeBetween(22, 31);
+
+        //then
+        assertThat(result).hasSize(4)
+                .extracting("username", "age")
+                .containsExactly(
+                        Tuple.tuple("곽두팔", 22),
+                        Tuple.tuple("박상두", 31),
+                        Tuple.tuple("김봉순", 27),
+                        Tuple.tuple("김봉순", 25)
+                );
+    }
+
 }

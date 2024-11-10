@@ -16,4 +16,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     List<Member> findByUsername(String username);
 
+    List<Member> findByAgeBetween(int age1, int age2);
+
 }
