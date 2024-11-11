@@ -92,7 +92,7 @@ class MemberTeamTest {
                 );
     }
 
-@DisplayName("Between")
+    @DisplayName("Between")
     @Test
     void between() {
         //given
@@ -106,6 +106,37 @@ class MemberTeamTest {
 
         //then
         assertThat(result).hasSize(4)
+                .extracting("username", "age")
+                .containsExactly(
+                        Tuple.tuple("곽두팔", 22),
+                        Tuple.tuple("박상두", 31),
+                        Tuple.tuple("김봉순", 27),
+                        Tuple.tuple("김봉순", 25)
+                );
+    }
+
+    @DisplayName("LessThan, LessThanEqual")
+    @Test
+    void lessThan_lessThanEqual() {
+        //given
+        Member member1 = memberRepository.save(new Member("곽두팔", 22));
+        Member member2 = memberRepository.save(new Member("박상두", 31));
+        Member member3 = memberRepository.save(new Member("김봉순", 27));
+        Member member4 = memberRepository.save(new Member("김봉순", 25));
+
+        //when
+        List<Member> result1 = memberRepository.findByAgeLessThan(31);
+        List<Member> result2 = memberRepository.findByAgeLessThanEqual(31);
+
+        //then
+        assertThat(result1).hasSize(3)
+                .extracting("username", "age")
+                .containsExactly(
+                        Tuple.tuple("곽두팔", 22),
+                        Tuple.tuple("김봉순", 27),
+                        Tuple.tuple("김봉순", 25)
+                );
+        assertThat(result2).hasSize(4)
                 .extracting("username", "age")
                 .containsExactly(
                         Tuple.tuple("곽두팔", 22),
