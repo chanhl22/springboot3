@@ -22,4 +22,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     List<Member> findByAgeLessThanEqual(int age);
 
+    List<Member> findByAgeGreaterThan(int age);
+
+    List<Member> findByAgeGreaterThanEqual(int age);
+
 }
