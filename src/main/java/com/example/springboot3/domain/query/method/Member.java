@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -33,6 +35,8 @@ public class Member {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    private LocalDateTime birthDay;
+
     public Member(String username) {
         this(username, 0);
     }
@@ -44,6 +48,15 @@ public class Member {
     public Member(String username, int age, Team team) {
         this.username = username;
         this.age = age;
+        if (team != null) {
+            changeTeam(team);
+        }
+    }
+
+    public Member(String username, int age, LocalDateTime birthDay, Team team) {
+        this.username = username;
+        this.age = age;
+        this.birthDay = birthDay;
         if (team != null) {
             changeTeam(team);
         }
