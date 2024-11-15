@@ -2,6 +2,7 @@ package com.example.springboot3.domain.query.method;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
@@ -25,5 +26,13 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     List<Member> findByAgeGreaterThan(int age);
 
     List<Member> findByAgeGreaterThanEqual(int age);
+
+    List<Member> findByAgeBefore(int age);
+
+    List<Member> findByAgeAfter(int age);
+
+    List<Member> findByBirthDayBefore(LocalDateTime birthDay);
+
+    List<Member> findByBirthDayAfter(LocalDateTime birthDay);
 
 }
