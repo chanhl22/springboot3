@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -172,6 +173,36 @@ class MemberTeamTest {
                 .containsExactly(
                         Tuple.tuple("곽두팔", 22),
                         Tuple.tuple("박상두", 31),
+                        Tuple.tuple("김봉순", 27),
+                        Tuple.tuple("김봉순", 25)
+                );
+    }
+
+    @DisplayName("After, Before")
+    @Test
+    void after_before() {
+        //given
+        Member member1 = memberRepository.save(new Member("곽두팔", 22, LocalDateTime.of(2001, 10, 21, 0, 0, 0)));
+        Member member2 = memberRepository.save(new Member("박상두", 31, LocalDateTime.of(1992, 8, 8, 0, 0, 0)));
+        Member member3 = memberRepository.save(new Member("김봉순", 27, LocalDateTime.of(1996, 2, 19, 0, 0, 0)));
+        Member member4 = memberRepository.save(new Member("김봉순", 25, LocalDateTime.of(1998, 5, 30, 0, 0, 0)));
+
+        //when
+        List<Member> result1 = memberRepository.findByAgeAfter(22);
+        List<Member> result2 = memberRepository.findByAgeBefore(31);
+
+        //then
+        assertThat(result1).hasSize(3)
+                .extracting("username", "age")
+                .containsExactly(
+                        Tuple.tuple("박상두", 31),
+                        Tuple.tuple("김봉순", 27),
+                        Tuple.tuple("김봉순", 25)
+                );
+        assertThat(result2).hasSize(3)
+                .extracting("username", "age")
+                .containsExactly(
+                        Tuple.tuple("곽두팔", 22),
                         Tuple.tuple("김봉순", 27),
                         Tuple.tuple("김봉순", 25)
                 );

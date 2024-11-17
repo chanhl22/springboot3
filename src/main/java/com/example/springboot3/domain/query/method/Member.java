@@ -45,12 +45,10 @@ public class Member {
         this(username, age, null);
     }
 
-    public Member(String username, int age, Team team) {
+    public Member(String username, int age, LocalDateTime birthDay) {
         this.username = username;
         this.age = age;
-        if (team != null) {
-            changeTeam(team);
-        }
+        this.birthDay = birthDay;
     }
 
     public Member(String username, int age, LocalDateTime birthDay, Team team) {
