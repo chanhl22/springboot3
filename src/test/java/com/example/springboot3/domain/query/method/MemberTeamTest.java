@@ -23,9 +23,9 @@ class MemberTeamTest {
     @Test
     void and() {
         //given
-        Member member1 = memberRepository.save(new Member("곽두팔", 22));
-        Member member2 = memberRepository.save(new Member("박상두", 31));
-        Member member3 = memberRepository.save(new Member("김봉순", 27));
+        memberRepository.save(new Member("곽두팔", 22));
+        memberRepository.save(new Member("박상두", 31));
+        memberRepository.save(new Member("김봉순", 27));
 
         //when
         List<Member> result = memberRepository.findByUsernameAndAge("곽두팔", 22);
@@ -42,9 +42,9 @@ class MemberTeamTest {
     @Test
     void or() {
         //given
-        Member member1 = memberRepository.save(new Member("곽두팔", 22));
-        Member member2 = memberRepository.save(new Member("박상두", 31));
-        Member member3 = memberRepository.save(new Member("김봉순", 27));
+        memberRepository.save(new Member("곽두팔", 22));
+        memberRepository.save(new Member("박상두", 31));
+        memberRepository.save(new Member("김봉순", 27));
 
         //when
         List<Member> result = memberRepository.findByUsernameOrAge("김봉순", 22);
@@ -62,10 +62,10 @@ class MemberTeamTest {
     @Test
     void is_equal() {
         //given
-        Member member1 = memberRepository.save(new Member("곽두팔", 22));
-        Member member2 = memberRepository.save(new Member("박상두", 31));
-        Member member3 = memberRepository.save(new Member("김봉순", 27));
-        Member member4 = memberRepository.save(new Member("김봉순", 25));
+        memberRepository.save(new Member("곽두팔", 22));
+        memberRepository.save(new Member("박상두", 31));
+        memberRepository.save(new Member("김봉순", 27));
+        memberRepository.save(new Member("김봉순", 25));
 
         //when
         List<Member> result1 = memberRepository.findByUsernameIs("김봉순");
@@ -97,10 +97,10 @@ class MemberTeamTest {
     @Test
     void between() {
         //given
-        Member member1 = memberRepository.save(new Member("곽두팔", 22));
-        Member member2 = memberRepository.save(new Member("박상두", 31));
-        Member member3 = memberRepository.save(new Member("김봉순", 27));
-        Member member4 = memberRepository.save(new Member("김봉순", 25));
+        memberRepository.save(new Member("곽두팔", 22));
+        memberRepository.save(new Member("박상두", 31));
+        memberRepository.save(new Member("김봉순", 27));
+        memberRepository.save(new Member("김봉순", 25));
 
         //when
         List<Member> result = memberRepository.findByAgeBetween(22, 31);
@@ -120,10 +120,10 @@ class MemberTeamTest {
     @Test
     void lessThan_lessThanEqual() {
         //given
-        Member member1 = memberRepository.save(new Member("곽두팔", 22));
-        Member member2 = memberRepository.save(new Member("박상두", 31));
-        Member member3 = memberRepository.save(new Member("김봉순", 27));
-        Member member4 = memberRepository.save(new Member("김봉순", 25));
+        memberRepository.save(new Member("곽두팔", 22));
+        memberRepository.save(new Member("박상두", 31));
+        memberRepository.save(new Member("김봉순", 27));
+        memberRepository.save(new Member("김봉순", 25));
 
         //when
         List<Member> result1 = memberRepository.findByAgeLessThan(31);
@@ -151,10 +151,10 @@ class MemberTeamTest {
     @Test
     void greaterThan_greaterThanEqual() {
         //given
-        Member member1 = memberRepository.save(new Member("곽두팔", 22));
-        Member member2 = memberRepository.save(new Member("박상두", 31));
-        Member member3 = memberRepository.save(new Member("김봉순", 27));
-        Member member4 = memberRepository.save(new Member("김봉순", 25));
+        memberRepository.save(new Member("곽두팔", 22));
+        memberRepository.save(new Member("박상두", 31));
+        memberRepository.save(new Member("김봉순", 27));
+        memberRepository.save(new Member("김봉순", 25));
 
         //when
         List<Member> result1 = memberRepository.findByAgeGreaterThan(22);
@@ -182,10 +182,10 @@ class MemberTeamTest {
     @Test
     void after_before() {
         //given
-        Member member1 = memberRepository.save(new Member("곽두팔", 22, LocalDateTime.of(2001, 10, 21, 0, 0, 0)));
-        Member member2 = memberRepository.save(new Member("박상두", 31, LocalDateTime.of(1992, 8, 8, 0, 0, 0)));
-        Member member3 = memberRepository.save(new Member("김봉순", 27, LocalDateTime.of(1996, 2, 19, 0, 0, 0)));
-        Member member4 = memberRepository.save(new Member("김봉순", 25, LocalDateTime.of(1998, 5, 30, 0, 0, 0)));
+        memberRepository.save(new Member("곽두팔", 22, LocalDateTime.of(2001, 10, 21, 0, 0, 0)));
+        memberRepository.save(new Member("박상두", 31, LocalDateTime.of(1992, 8, 8, 0, 0, 0)));
+        memberRepository.save(new Member("김봉순", 27, LocalDateTime.of(1996, 2, 19, 0, 0, 0)));
+        memberRepository.save(new Member("김봉순", 25, LocalDateTime.of(1998, 5, 30, 0, 0, 0)));
 
         //when
         List<Member> result1 = memberRepository.findByAgeAfter(22);
