@@ -1,7 +1,5 @@
 package com.example.springboot3.factory.ship.v2;
 
-import com.example.springboot3.factory.ship.ContainerShip;
-import com.example.springboot3.factory.ship.OilTankerShip;
 import com.example.springboot3.factory.ship.Ship;
 
 public class ShipFactory {

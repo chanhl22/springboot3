@@ -1,4 +1,6 @@
-package com.example.springboot3.factory.ship;
+package com.example.springboot3.factory.ship.v2;
+
+import com.example.springboot3.factory.ship.Ship;
 
 public class ContainerShip extends Ship {
 
