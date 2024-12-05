@@ -1,0 +1,25 @@
+### 로그인
+POST http://localhost:8080/login/set-cookie
+Content-Type: application/json
+
+{
+  "username" : "manager",
+  "password" : "123"
+}
+
+> {%
+    // 쿠키 추출
+    const cookie = response.headers.valueOf("Set-Cookie")
+    const myCookie = cookie.split(";")[0].split("=")[1];
+
+    // 쿠키 저장
+    client.global.set("myCookie", myCookie);
+
+    // 로그 출력
+    client.log("myCookie: " + myCookie);
+%}
+
+### 참여정보 통계 조회
+GET http://localhost:8080/find/get-cookie
+Content-Type: application/json
+Cookie: myCookie={{myCookie}}
