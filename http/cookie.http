@@ -16,7 +16,7 @@ Content-Type: application/json
     client.global.set("myCookie", myCookie);
 
     // 로그 출력
-    client.log("myCookie: " + myCookie);
+    client.log("myCookie: " + client.global.get("myCookie"));
 %}
 
 ### 로그인
