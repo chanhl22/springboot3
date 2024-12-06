@@ -19,7 +19,41 @@ Content-Type: application/json
     client.log("myCookie: " + myCookie);
 %}
 
+### 로그인
+POST http://localhost:8080/login/set-cookies
+Content-Type: application/json
+
+{
+  "username" : "manager",
+  "password" : "123"
+}
+
+> {%
+    // 쿠키 추출
+    const cookies = response.headers.valuesOf("Set-Cookie")
+    const myCookie1 = cookies.find(cookie => cookie.startsWith("myCookie1=")).split(";")[0].split("=")[1];
+    const myCookie2 = cookies.find(cookie => cookie.startsWith("myCookie2=")).split(";")[0].split("=")[1];
+    const myCookie3 = cookies.find(cookie => cookie.startsWith("myCookie3=")).split(";")[0].split("=")[1];
+
+    // 쿠키 저장
+    client.global.set("myCookie1", myCookie1);
+    client.global.set("myCookie2", myCookie2);
+    client.global.set("myCookie3", myCookie3);
+
+    // 로그 출력
+    client.log("myCookie1: " + myCookie1);
+    client.log("myCookie2: " + myCookie2);
+    client.log("myCookie3: " + myCookie3);
+%}
+
 ### 참여정보 통계 조회
 GET http://localhost:8080/find/get-cookie
 Content-Type: application/json
 Cookie: myCookie={{myCookie}}
+
+### 참여정보 통계 조회
+GET http://localhost:8080/find/get-cookies
+Content-Type: application/json
+Cookie: myCookie1={{myCookie1}}
+Cookie: myCookie2={{myCookie2}}
+Cookie: myCookie3={{myCookie3}}
