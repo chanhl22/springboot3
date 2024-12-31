@@ -1,4 +1,4 @@
-package com.example.springboot3.domain.stream;
+package com.example.springboot3.stream;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,6 +1,6 @@
-package com.example.springboot3.domain.stream;
+package com.example.springboot3.stream;
 
-import com.example.springboot3.domain.stream.dto.StreamSampleDto;
+import com.example.springboot3.stream.dto.StreamSampleDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

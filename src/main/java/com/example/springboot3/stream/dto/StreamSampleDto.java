@@ -1,4 +1,4 @@
-package com.example.springboot3.domain.stream.dto;
+package com.example.springboot3.stream.dto;
 
 import lombok.Builder;
 import lombok.Getter;

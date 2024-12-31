@@ -1,6 +1,7 @@
-package com.example.springboot3.domain.stream;
+package com.example.springboot3.stream;
 
-import com.example.springboot3.domain.stream.dto.StreamSampleDto;
+import com.example.springboot3.stream.StreamService;
+import com.example.springboot3.stream.dto.StreamSampleDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
