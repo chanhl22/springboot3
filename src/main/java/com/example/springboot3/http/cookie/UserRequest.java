@@ -1,4 +1,4 @@
-package com.example.springboot3.http.dto;
+package com.example.springboot3.http.cookie.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

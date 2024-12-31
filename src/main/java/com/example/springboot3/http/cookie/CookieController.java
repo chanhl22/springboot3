@@ -1,6 +1,6 @@
-package com.example.springboot3.http;
+package com.example.springboot3.http.cookie;
 
-import com.example.springboot3.http.dto.UserRequest;
+import com.example.springboot3.http.cookie.dto.UserRequest;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
