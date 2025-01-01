@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.net.URI;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class LegislationUriBuilderTest {
@@ -15,33 +15,89 @@ class LegislationUriBuilderTest {
     @Autowired
     private LegislationUriBuilder legislationUriBuilder;
 
-    @DisplayName("URI 인코딩 확인하기")
+    @DisplayName("toUriString() 은 인코딩된다.")
     @Test
-    void buildInformationOnLivingLawsUri() {
+    void toUriString() {
         //given
 
         //when
-        // build(true) 라서 다시 인코딩이 안됨
-//        URI uri1 = legislationUriBuilder.buildInformationOnLivingLawsUri_v1();
-//        // build() 라서 인코딩이 됨
-//        URI uri1_1 = legislationUriBuilder.buildInformationOnLivingLawsUri_v1_1();
-//
-//        String uri2 = legislationUriBuilder.buildInformationOnLivingLawsUri_v2();
-
-        // encode()이 없으니까 인코딩 안되는게 맞음
-        String uri3 = legislationUriBuilder.buildInformationOnLivingLawsUri_v3();
-
-
-//        String uri3_1 = legislationUriBuilder.buildInformationOnLivingLawsUri_v3_1();
-//
-//        // encode()이 있으니까 인코딩 되는게 맞음
-//        String uri4 = legislationUriBuilder.buildInformationOnLivingLawsUri_v4();
-//
-//        // build(true) 는 인코딩이 퇬는지 안됐는지 알려주는 것이 맞나??
-//        String uri5 = legislationUriBuilder.buildInformationOnLivingLawsUri_v5();
+        String uri = legislationUriBuilder.toUriString();
 
         //then
+        assertThat(uri).isEqualTo("https://api.sample.kr/api/v1?serviceKey=ui6ck%252B%252Bvo0k0DmG5doChkQncqlKMa%252Bgoj5GjcU%252B5NOH1Dixxh043ztpOlVRQ%253D%253D");
+    }
 
+    @DisplayName("build(true).toUri() 은 인코딩되지 않는다.")
+    @Test
+    void buildTrueToUri() {
+        //given
+
+        //when
+        URI uri = legislationUriBuilder.buildTrueToUri();
+
+        //then
+        assertThat(uri.toString()).isEqualTo("https://api.sample.kr/api/v1?serviceKey=ui6ck%2B%2Bvo0k0DmG5doChkQncqlKMa%2Bgoj5GjcU%2B5NOH1Dixxh043ztpOlVRQ%3D%3D");
+    }
+
+    @DisplayName("build(false).toUri() 은 인코딩된다.")
+    @Test
+    void buildFalseToUri() {
+        //given
+
+        //when
+        URI uri = legislationUriBuilder.buildFalseToUri();
+
+        //then
+        assertThat(uri.toString()).isEqualTo("https://api.sample.kr/api/v1?serviceKey=ui6ck%252B%252Bvo0k0DmG5doChkQncqlKMa%252Bgoj5GjcU%252B5NOH1Dixxh043ztpOlVRQ%253D%253D");
+    }
+
+
+    @DisplayName("build(false).toUriString() 은 인코딩되지 않는다.")
+    @Test
+    void buildFalseToUriString() {
+        //given
+
+        //when
+        String uri = legislationUriBuilder.buildFalseToUriString();
+
+        //then
+        assertThat(uri).isEqualTo("https://api.sample.kr/api/v1?serviceKey=ui6ck%2B%2Bvo0k0DmG5doChkQncqlKMa%2Bgoj5GjcU%2B5NOH1Dixxh043ztpOlVRQ%3D%3D");
+    }
+
+    @DisplayName("build(true).toUriString() 은 인코딩되지 않는다.")
+    @Test
+    void buildTrueToUriString() {
+        //given
+
+        //when
+        String uri = legislationUriBuilder.buildTrueToUriString();
+
+        //then
+        assertThat(uri).isEqualTo("https://api.sample.kr/api/v1?serviceKey=ui6ck%2B%2Bvo0k0DmG5doChkQncqlKMa%2Bgoj5GjcU%2B5NOH1Dixxh043ztpOlVRQ%3D%3D");
+    }
+
+    @DisplayName("build(false).encode().toUriString() 은 인코딩된다.")
+    @Test
+    void buildFalseEncodeToUriString() {
+        //given
+
+        //when
+        String uri = legislationUriBuilder.buildFalseEncodeToUriString();
+
+        //then
+        assertThat(uri).isEqualTo("https://api.sample.kr/api/v1?serviceKey=ui6ck%252B%252Bvo0k0DmG5doChkQncqlKMa%252Bgoj5GjcU%252B5NOH1Dixxh043ztpOlVRQ%253D%253D");
+    }
+
+    @DisplayName("build(true).encode().toUriString() 은 인코딩되지 않는다.")
+    @Test
+    void buildTrueEncodeToUriString() {
+        //given
+
+        //when
+        String uri = legislationUriBuilder.buildTrueEncodeToUriString();
+
+        //then
+        assertThat(uri).isEqualTo("https://api.sample.kr/api/v1?serviceKey=ui6ck%2B%2Bvo0k0DmG5doChkQncqlKMa%2Bgoj5GjcU%2B5NOH1Dixxh043ztpOlVRQ%3D%3D");
     }
 
 }
