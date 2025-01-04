@@ -1,5 +1,7 @@
-package com.example.springboot3.domain.query.method;
+package com.example.springboot3.query.method;
 
+import com.example.springboot3.query.method.Member;
+import com.example.springboot3.query.method.MemberRepository;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

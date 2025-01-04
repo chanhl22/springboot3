@@ -1,4 +1,4 @@
-package com.example.springboot3.domain.query.method;
+package com.example.springboot3.query.method;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
