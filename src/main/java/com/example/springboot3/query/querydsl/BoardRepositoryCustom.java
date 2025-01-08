@@ -8,4 +8,6 @@ public interface BoardRepositoryCustom {
 
     List<Board> searchAnd(String word);
 
+    List<Board> searchAndDirect(String word);
+
 }

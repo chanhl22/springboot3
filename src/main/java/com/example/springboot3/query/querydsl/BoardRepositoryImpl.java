@@ -53,6 +53,18 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom {
         return query.fetch();
     }
 
+    @Override
+    public List<Board> searchAndDirect(String word) {
+        List<String> splitWords = Arrays.stream(word.split("\\s+"))
+                .toList();
+
+        return queryFactory
+                .selectFrom(board)
+                .where(board.content.containsIgnoreCase(splitWords.get(0)))
+                .where(board.content.containsIgnoreCase(splitWords.get(1)))
+                .fetch();
+    }
+
     private void searchConditionAnd(String word, JPAQuery<Board> query) {
         if (StringUtils.isBlank(word)) {
             return;
